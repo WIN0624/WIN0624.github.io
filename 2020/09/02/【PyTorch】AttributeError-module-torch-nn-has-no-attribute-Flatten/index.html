@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hello World |  Hexo
+    【PyTorch】AttributeError: module &#39;torch.nn&#39; has no attribute &#39;Flatten&#39; |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-hello-world"
+  id="post-【PyTorch】AttributeError-module-torch-nn-has-no-attribute-Flatten"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hello World
+  【PyTorch】AttributeError: module &#39;torch.nn&#39; has no attribute &#39;Flatten&#39;
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/07/19/hello-world/" class="article-date">
-  <time datetime="2020-07-19T13:19:43.241Z" itemprop="datePublished">2020-07-19</time>
+      <a href="/2020/09/02/%E3%80%90PyTorch%E3%80%91AttributeError-module-torch-nn-has-no-attribute-Flatten/" class="article-date">
+  <time datetime="2020-09-02T12:21:09.000Z" itemprop="datePublished">2020-09-02</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">73</span>
+            <span class="post-count">555</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -94,19 +94,72 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+  <h2 id="问题简述"><a href="#问题简述" class="headerlink" title="问题简述"></a>问题简述</h2><p>​        当数据集为图像数据，在利用<code>nn.Sequential</code>类构建神经网络时，往往需要先利用<code>nn.Flatten(start_dim=1)</code>将数据展平 —— 使数据集变为矩阵张量（行长度为batch_size，列长度为特征量），但在导入pytorch-cpu库运行以下代码时却遇到异常：AttributeError: module ‘torch.nn’ has no attribute ‘Flatten’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line">network1 = nn.Sequential(</span><br><span class="line">	nn.Flatten(start_dim=<span class="number">1</span>),</span><br><span class="line">    nn.Linear(in_features=<span class="number">784</span>, out_features=<span class="number">392</span>),</span><br><span class="line">    nn.Linear(in_features=<span class="number">392</span>, out_features=<span class="number">10</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<img src="https://gitee.com/WIN0624/document/raw/markdown-picture/img/image-20200902210321845.png" alt="image-20200902210321845" style="zoom: 75%;" />
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><ul>
+<li><p>pytorch-cpu：1.1.0</p>
+<blockquote>
+<p>若是使用GPU版，则大概率可以通过升级PyTorch解决此问题</p>
+<ul>
+<li>pip命令：pip install –upgrade pytorch==1.2.0</li>
+<li>conda命令：conda update pytorch==1.2.0</li>
+</ul>
+</blockquote>
+</li>
+<li><p>CUDA：None</p>
+</li>
+</ul>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ul>
+<li><p>Step1. 在PyTorch的Github项目（<a href="https://github.com/pytorch/pytorch）中查询`nn.Flatten`" target="_blank" rel="noopener">https://github.com/pytorch/pytorch）中查询`nn.Flatten`</a></p>
+<ul>
+<li>发现：Flatten类的对应源码为 nn/Modules/flatten.py</li>
+<li>说明：目前PyTorch的版本可能已经进行了相应的更新，可以尝试更新</li>
+<li>命令：conda update pytorch-cpu</li>
+<li>效果：torch版本依然为1.1.0，且代码依旧报错</li>
+</ul>
+</li>
+<li><p>Step2. 查看nn.Module下其他类是否能够正常运行</p>
+<ul>
+<li><p>操作：在VS code中输入<code>nn.</code>，看代码提示中是否出现了<code>Linear</code>或<code>BatchNorm2d</code></p>
+  <img src="https://gitee.com/WIN0624/document/raw/markdown-picture/img/image-20200902204439194.png" width="50%" height="50%">
+</li>
+<li><p>若正常显示，表示nn.Module类可以正常导入并调用，则<code>Flatten</code>类不能调用的原因是<code>nn.Modules</code>声明包（<code>__init__.py</code>)时没有从flatten.py导入Flatten类，导致在调用nn.Modules包时无法找到Flatten类</p>
+</li>
+</ul>
+</li>
+<li><p>Step3. 修改nn.Modules的包声明文件</p>
+<ul>
+<li><p>修改前，可以看到包声明文件并没有导入Flatten类</p>
+  <img src="https://gitee.com/WIN0624/document/raw/markdown-picture/img/image-20200902205914747.png" width="70%" height="70%">
+</li>
+<li><p>在导入部分导入Flatten类</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .flatten <span class="keyword">import</span> Flatten</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>__all__</code>数组的尾部加入类名，注意以逗号结尾</p>
+  <img src="https://gitee.com/WIN0624/document/raw/markdown-picture/img/image-20200902210220716.png" width="70%" height="70%">
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><img src="https://gitee.com/WIN0624/document/raw/markdown-picture/img/image-20200902211019703.png" alt="image-20200902211019703" style="zoom:80%;" />
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>问题产生原因</p>
+<p>  pytorch-cpu的1.1.0版本，其nn.Modules包中有flatten.py文件（定义了Flatten类），但并没有在Modules的包声明文件中导入该类，以致于在调用nn.Modules使无法找到该类。</p>
+</li>
+<li><p>解决办法</p>
+<p>  在Modules的包声明文件导入该类，并在<code>__all__</code>数组中加入该类名</p>
+</li>
+<li><p>补充说明</p>
+<p>  截止2020.09.02，PyTorch还在flatten.py中定义了Unflatten类，而pytorch-cpu的1.1.0版本亦未对此类进行声明，因此也可以依据上述办法解决AttributeError: module ‘torch.nn’ has no attribute ‘Unflatten’ 异常。</p>
+</li>
+</ul>
  
       <!-- reward -->
       
@@ -169,26 +222,24 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/19/hello-world/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/09/02/%E3%80%90PyTorch%E3%80%91AttributeError-module-torch-nn-has-no-attribute-Flatten/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E9%97%AE%E9%A2%98/" rel="tag">代码运行问题</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2020/09/02/%E3%80%90PyTorch%E3%80%91AttributeError-module-torch-nn-has-no-attribute-Flatten/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            【PyTorch】AttributeError: module &#39;torch.nn&#39; has no attribute &#39;Flatten&#39;
-          
-        </div>
-      </a>
     
+      <a href="/2020/07/19/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Hello World</div>
+      </a>
     
   </nav>
 
